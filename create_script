@@ -1,0 +1,6 @@
+#!/bin/bash
+shebang='#!/bin/bash'
+
+touch $1
+echo $shebang > $1
+chmod +x $1
