@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# prints "Best School" 10 times using while loop
+#  displays the time for 12 hours and 59 minutes
 
 hours=0
 
