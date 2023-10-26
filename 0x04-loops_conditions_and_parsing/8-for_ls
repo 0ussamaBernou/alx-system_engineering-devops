@@ -5,7 +5,7 @@ dir="."
 
 for file in "$dir"/*; do
     if [ -f "$file" ]; then
-        file=$(basename "$file")
+        file=$(basename "${file#*-}")
         echo "$file"
     fi
 
