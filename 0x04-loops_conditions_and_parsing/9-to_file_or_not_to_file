@@ -13,7 +13,7 @@ if [ -e "$filename" ]; then
     fi
 
     if [ -e "$filename" ]; then
-        echo "school file is empty"
+        echo "school is a regular file"
     fi
 
 else
