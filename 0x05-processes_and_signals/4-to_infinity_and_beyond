@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # script that displays To infinity and beyond indefinitely
 
-# print Terminated when killed using SIGTERM signal
-trap 'echo "Terminated"; exit' SIGTERM
-
 while true; do
     echo "To infinity and beyond"
     sleep 2
