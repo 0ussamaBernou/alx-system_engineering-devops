@@ -5,6 +5,6 @@ process_name="4-to_infinity_and_beyond"
 pid=$(pgrep -f "$process_name")
 # if pid exists kill it
 if [ -n "$pid" ]; then
-    kill -2 "$pid"
+    kill "$pid"
     # echo "$pid" | xargs kill -2
 fi
