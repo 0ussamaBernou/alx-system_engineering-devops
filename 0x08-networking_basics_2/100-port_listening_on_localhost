@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script that changes hosts configuration on Ubuntu
+
+nc -l 98
