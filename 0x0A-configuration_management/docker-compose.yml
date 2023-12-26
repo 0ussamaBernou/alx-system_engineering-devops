@@ -3,4 +3,4 @@ services:
  webapp:
    build: .
    volumes:
-     - .:/config_manage
+     - ./:/config_manage

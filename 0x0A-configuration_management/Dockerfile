@@ -6,3 +6,6 @@ RUN apt-get install -y ruby-augeas
 RUN apt-get install -y ruby-shadow
 RUN apt-get install -y puppet
 RUN gem install puppet-lint
+
+CMD ["puppet-lint", "--version"]
+CMD ["/bin/bash"]
