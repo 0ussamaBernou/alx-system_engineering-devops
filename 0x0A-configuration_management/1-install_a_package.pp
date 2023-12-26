@@ -1,7 +1,7 @@
 # instal flask
-#class { 'python3':
-#  ensure => present,
-#}
+class { 'python3':
+  ensure => present,
+}
 package { 'python3-pip':
   ensure => present,
 }
