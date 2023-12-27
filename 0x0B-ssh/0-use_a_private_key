@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+ssh-add -K ~/.ssh/school
 ssh -i ~/.ssh/school -A ubuntu@3.84.158.3
