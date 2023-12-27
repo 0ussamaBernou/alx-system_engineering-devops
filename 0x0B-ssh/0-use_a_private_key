@@ -9,4 +9,4 @@ USER="ubuntu"
 PORT="22"
 
 
-ssh -i "$PRIVATE_KEY" -o User=ubuntu -p $PORT $USER@$SERVER_IP
+ssh -i "$PRIVATE_KEY" -p $PORT $USER@$SERVER_IP
