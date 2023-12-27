@@ -4,4 +4,4 @@ SSH_CONF="Host *\
    IdentityFile ~/.ssh/school\
    PasswordAuthentication no\
 "
-echo "$SSH_CONF" > ~/.ssh/config
+echo "$SSH_CONF" >> ~/.ssh/config
