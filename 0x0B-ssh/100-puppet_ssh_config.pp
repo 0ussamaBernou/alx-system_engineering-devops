@@ -1,7 +1,4 @@
 # puppet script to configure ssh
-file { '~/.ssh/config':
-  ensure => file,
-}
 
 file_line { 'Declare identity file':
   ensure  => present,
