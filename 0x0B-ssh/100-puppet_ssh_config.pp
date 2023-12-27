@@ -1,4 +1,5 @@
 # puppet script to configure ssh
+include stdlib
 
 file_line { 'Declare identity file':
   ensure  => present,
