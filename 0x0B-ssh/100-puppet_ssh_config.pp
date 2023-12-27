@@ -1,3 +1,4 @@
+# puppet script to configure ssh
 file { '~/.ssh/config':
   ensure => file,
 }
