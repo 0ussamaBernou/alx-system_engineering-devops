@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+PRIVATE_KEY="$HOME/.ssh/school"
+
+SERVER_IP="3.84.158.36"
+
+USER="ubuntu"
+
+PORT="22"
+
+
+ssh -i "$PRIVATE_KEY" -o User=ubuntu -p $PORT $USER@$SERVER_IP
