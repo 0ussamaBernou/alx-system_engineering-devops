@@ -1,18 +1,16 @@
-file { '/home/ubuntu/.ssh/config':
+file { '~/.ssh/config':
   ensure => file,
-  owner  => 'ubuntu',
-  group  => 'ubuntu',
-  mode   => '0600',
 }
 
 file_line { 'Declare identity file':
-  path  => '/home/ubuntu/.ssh/config',
-  line  => 'IdentityFile /home/ubuntu/.ssh/school',
-  match => '^IdentityFile ',
+  ensure  => present,
+  path    => '~/.ssh/config',
+  line    => 'IdentityFile ~/.ssh/school',
+  replace => true,
 }
 
 file_line { 'Turn off passwd auth':
-  path  => '/home/ubuntu/.ssh/config',
-  line  => 'PasswordAuthentication no',
-  match => '^PasswordAuthentication ',
+  path    => '~/.ssh/config',
+  line    => 'PasswordAuthentication no',
+  replace => true,
 }
