@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SSH_CONF="Host *\
-    IdentityFile ~/.ssh/school\
-   PasswordAuthentication no\
-   "
-echo -e "$SSH_CONF" > ~/.ssh/config
+cat << EOF > ~/.ssh/config
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+EOF
