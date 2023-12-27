@@ -1,1 +1,9 @@
 #!/usr/bin/env bash
+
+NAME="school"
+
+BITS=4096
+
+PASSPHRASE="betty"
+
+ssh-keygen -t rsa -b $BITS -f $NAME -N "$PASSPHRASE"
