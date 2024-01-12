@@ -9,4 +9,4 @@ PATH_TO_FILE=$1
 IP=$2
 USERNAME=$3
 PATH_TO_SSH_KEY=$4
-scp -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":/home/"$USERNAME"
+scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":/home/"$USERNAME"
