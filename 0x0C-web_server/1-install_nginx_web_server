@@ -5,11 +5,6 @@ apt-get install nginx -y
 ufw allow 'Nginx Full'
 ufw allow 'Nginx HTTP'
 ufw allow 80
-
-chown -R "$USER":"$USER" /var/www/html
-chmod -R 755 /var/www/html
-
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.old
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-
 service nginx start
