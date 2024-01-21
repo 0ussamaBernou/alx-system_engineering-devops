@@ -2,8 +2,6 @@
 # Installs nginx on a server
 apt-get update -y
 apt-get install nginx -y
-ufw allow 'Nginx Full'
 ufw allow 'Nginx HTTP'
-ufw allow 80
 echo "Hello World!" > /var/www/html/index.html
 service nginx start
