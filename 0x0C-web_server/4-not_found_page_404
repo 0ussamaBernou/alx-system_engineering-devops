@@ -1,1 +1,6 @@
 #!/usr/bin/env bash
+# custom nginx 404 page
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+
+sudo sed -i '/error_page 404 /d' /etc/nginx/nginx.conf
+echo "error_page 404 /404.html;" | sudo tee -a /etc/nginx/nginx.conf
