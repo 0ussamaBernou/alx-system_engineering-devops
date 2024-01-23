@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # nginx likes port 80
 sed -i 's/8080/80/g' /etc/nginx/sites-available/default
-sed -i 's/80.*$/80;/g' /etc/nginx/sites-available/default
 systemctl restart nginx
 pkill -9 nginx
