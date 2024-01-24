@@ -2,5 +2,5 @@
 # Port forwarding using firewall
 
 sudo sysctl net.ipv4.ip_forward=1
-sudo ufw allow 8080
+sudo ufw allow 8080/tcp
 sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-ports 80
