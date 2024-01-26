@@ -8,12 +8,13 @@ fi
 # Stop nginx if it is running
 service nginx stop
 
-# Change the owner of the nginx directory to the nginx user
-chown -R nginx:nginx /etc/nginx
 
 # Modify the nginx configuration to run as the nginx user and listen on port 8080
 sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
 sed -i 's/^listen .*/listen 8080;/' /etc/nginx/sites-available/default
+
+# Change the owner of the nginx directory to the nginx user
+chown -R nginx:nginx /etc/nginx
 
 # Start nginx
 sudo -u nginx service nginx start
