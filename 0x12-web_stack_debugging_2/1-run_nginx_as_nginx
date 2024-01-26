@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+# run nginx as nginx user
+service nginx stop
+chown -R nginx:nginx /etc/nginx
+sudo -u nginx service nginx start
