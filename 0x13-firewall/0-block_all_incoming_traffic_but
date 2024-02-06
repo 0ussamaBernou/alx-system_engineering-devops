@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Block all incoming traffic but allow SSH, HTTP and HTTPS using ufw
-sudo apt-get install ufw
-sudo ufw default deny incoming
-sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-sudo ufw enable
-sudo ufw status verbose
