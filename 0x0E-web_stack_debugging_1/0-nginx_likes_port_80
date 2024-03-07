@@ -4,4 +4,4 @@ sed -i 's/listen 80 default_server;;/listen 80;/g' /etc/nginx/sites-enabled/defa
 
 sed -i 's/listen [::]:80 default_server;/listen [::]:80;/g' /etc/nginx/sites-enabled/default
 
-systemctl restart nginx
+service nginx restart
