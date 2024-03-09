@@ -25,3 +25,5 @@ redirect="server {
     }
 }"
 echo "$redirect" > /etc/nginx/sites-available/default
+
+service nginx restart
