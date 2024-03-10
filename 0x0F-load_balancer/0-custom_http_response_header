@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#
-# This script installs nginx and configures it to return a custom 404 page
+
+# This script installs nginx and configures it to add a custom header containing server hostname.
 
 # Install Nginx if it's not installed
 if ! command -v nginx &> /dev/null; then
@@ -8,16 +8,15 @@ if ! command -v nginx &> /dev/null; then
     sudo apt-get install -y nginx
 fi
 
-
 # Define a custom header configuration
-CUSTOM_HEADER_CONFIG="/etc/nginx/conf.d/custom_header.conf"
+NGINX_CONFIG="/etc/nginx/sites-available/default"
 
 # Get the server's hostname
 HOSTNAME=$(hostname)
 
 # Write the custom header configuration
-echo "add_header X-Served-By $HOSTNAME;" | sudo tee $CUSTOM_HEADER_CONFIG
+sed "server {/a\    add_header X-Served-By $HOSTNAME;" | sudo tee $NGINX_CONFIG
 
 # Reload Nginx to apply the changes
 sudo nginx -s reload
-service nginx start
+# service nginx restart
