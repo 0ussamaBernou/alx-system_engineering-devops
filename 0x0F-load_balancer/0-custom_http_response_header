@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script installs nginx and configures it to add a custom header containing server hostname.
 
 # Install Nginx if it's not installed
