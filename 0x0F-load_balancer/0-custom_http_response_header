@@ -9,6 +9,8 @@ else
     echo "Nginx is already installed."
 fi
 
+service nginx start
+
 # Define a custom header configuration
 NGINX_CONFIG="/etc/nginx/sites-available/default"
 
