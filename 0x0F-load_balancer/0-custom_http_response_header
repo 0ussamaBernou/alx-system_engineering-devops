@@ -6,6 +6,8 @@
 if ! command -v nginx &> /dev/null; then
     sudo apt-get update
     sudo apt-get install -y nginx
+else
+    echo "Nginx is already installed."
 fi
 
 # Define a custom header configuration
@@ -15,7 +17,34 @@ NGINX_CONFIG="/etc/nginx/sites-available/default"
 HOSTNAME=$(hostname)
 
 # Write the custom header configuration
-sed "server {/a\    add_header X-Served-By $HOSTNAME;" | sudo tee $NGINX_CONFIG
+printf %s "server {
+    add_header X-Served-By $HOSTNAME;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files \$uri \$uri/ =404;
+    }
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    error_page 404 /404.html;
+    location /404 {
+        root /var/www/html;
+        internal;
+    }
+}" | sudo tee "$NGINX_CONFIG"
+
+# sed "/server {/a\    add_header X-Served-By $HOSTNAME;" "$NGINX_CONFIG" | sudo tee "$NGINX_CONFIG"
 
 # Reload Nginx to apply the changes
 sudo nginx -s reload
