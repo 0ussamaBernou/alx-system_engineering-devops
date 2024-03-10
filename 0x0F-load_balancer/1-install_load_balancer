@@ -1,1 +1,27 @@
 #!/usr/bin/env bash
+# Install and configure HAproxy on new server
+
+sudo apt-get update && sudo apt-get install haproxy=2.0.\* -y
+
+sudo service haproxy start
+
+HAPROXY_CONFIG="/etc/haproxy/haproxy.cfg"
+sudo cp $HAPROXY_CONFIG `printf %s "$HAPROXY_CONFIG.old"`
+
+printf %s "defaults
+        log     global
+        mode    http
+        timeout connect 5s
+        timeout client  10s
+        timeout server  10s
+        balance roundrobin
+#Inherits mode
+frontend website
+        bind :80
+        default_backend web_servers
+# Inherits mode and balance
+backend web_servers
+        server web-01 54.237.120.63
+        server web-02 34.202.164.249" | sudo tee $HAPROXY_CONFIG
+
+sudo service haproxy restart
