@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy on new server
 
-sudo apt-get update && sudo apt-get install haproxy=2.0.\* -y
-
-sudo service haproxy start
+apt-get update &&  apt-get install haproxy=2.0.\* -y
+service haproxy start
 
 HAPROXY_CONFIG="/etc/haproxy/haproxy.cfg"
-sudo cp $HAPROXY_CONFIG "$(printf %s "$HAPROXY_CONFIG.old")"
+cp $HAPROXY_CONFIG "$(printf %s "$HAPROXY_CONFIG.old")"
 
 printf %s "defaults
         log     global
@@ -24,4 +23,4 @@ backend web_servers
         server web-01 54.237.120.63
         server web-02 34.202.164.249" | sudo tee $HAPROXY_CONFIG
 
-sudo service haproxy restart
+service haproxy restart
