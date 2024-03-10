@@ -6,7 +6,7 @@ sudo apt-get update && sudo apt-get install haproxy=2.0.\* -y
 sudo service haproxy start
 
 HAPROXY_CONFIG="/etc/haproxy/haproxy.cfg"
-sudo cp $HAPROXY_CONFIG `printf %s "$HAPROXY_CONFIG.old"`
+sudo cp $HAPROXY_CONFIG "$(printf %s "$HAPROXY_CONFIG.old")"
 
 printf %s "defaults
         log     global
