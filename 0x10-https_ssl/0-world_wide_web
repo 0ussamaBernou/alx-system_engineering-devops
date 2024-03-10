@@ -1,1 +1,22 @@
 #!/usr/bin/env bash
+# bash script that displays information about a domain and its subdomains
+# Usage: ./0-world_wide_web <domain> [subdomain]
+
+
+www () {
+    if [ -z "$1" ]                           # Is parameter #1 zero length?
+    then
+        echo "Usage: 0-world_wide_web <domain> [subdomain]"
+    else
+        if [ "$2" ]
+        then
+            domain=$(printf %s "$2.$1")
+        else
+            domain=$1
+        fi
+
+        dig "$domain" | awk '/;; ANSWER SECTION:/{f=1; next} /^$/{f=0} f' | awk 'BEGIN { FS="[\t]+" } {print "The subdomain" , substr($1, 1, index($1,".")-1), "is a", $4 , "record and points to", $5}'
+    fi
+}
+
+www "$1" "$2"
