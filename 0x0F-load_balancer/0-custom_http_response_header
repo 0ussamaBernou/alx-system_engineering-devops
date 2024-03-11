@@ -11,11 +11,18 @@ fi
 
 service nginx start
 
+# Create a simple HTML file
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Hello World" > /var/www/html/index.html
+
+# Create a custom 404 page
+touch /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
 # Define a custom header configuration
 NGINX_CONFIG="/etc/nginx/sites-available/default"
 
-# Get the server's hostname
-HOSTNAME=$(hostname)
 
 # Write the custom header configuration
 printf %s "server {
