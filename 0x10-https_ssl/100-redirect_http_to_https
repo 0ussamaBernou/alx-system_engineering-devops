@@ -1,0 +1,39 @@
+global
+        maxconn 2048
+        tune.ssl.default-dh-param 2048
+
+
+defaults
+        log     global
+        mode    http
+        option forwardfor
+        option http-server-close
+        timeout connect 5s
+        timeout client  10s
+        timeout server  10s
+        balance roundrobin
+#Inherits mode
+frontend website
+        bind :80
+        default_backend web_servers
+
+# https frontend
+frontend www-https
+   bind :443 ssl crt /etc/haproxy/certs/www.bernoussama.tech.pem
+   reqadd X-Forwarded-Proto:\ https
+   acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+   use_backend letsencrypt-backend if letsencrypt-acl
+   default_backend web_servers
+   http-request set-header X-Forwarded-Proto https if { ssl_fc }
+   http-request set-header X-Forwarded-Proto http if !{ ssl_fc }
+   http-request redirect scheme https code 301 unless { ssl_fc }
+
+# Inherits mode and balance
+backend web_servers
+        redirect scheme https if !{ ssl_fc }
+        server web-01 54.237.120.63:80
+        server web-02 34.202.164.249:80
+
+# for certificate renewal..
+backend letsencrypt-backend
+   server letsencrypt 127.0.0.1:54321
