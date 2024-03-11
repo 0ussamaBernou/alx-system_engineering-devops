@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy on new server
 
-apt-get -y update &&  apt-get -y install haproxy=2.0.\*
+apt-get -y update && apt-get -y upgrade && apt-get -y install haproxy=2.0.\*
 
 service haproxy start
 
 HAPROXY_CONFIG="/etc/haproxy/haproxy.cfg"
-cp $HAPROXY_CONFIG "$(printf %s "$HAPROXY_CONFIG.old")"
+
+cp $HAPROXY_CONFIG "$(printf %s "$HAPROXY_CONFIG.orig")"
 
 printf %s "defaults
         log     global
