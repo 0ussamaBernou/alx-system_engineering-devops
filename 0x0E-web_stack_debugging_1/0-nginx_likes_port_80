@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # makes nginx listen on port 80
 sudo apt-get install nginx -y
+service nginx start
 printf %s "server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -13,4 +14,4 @@ printf %s "server {
     }
 }
 " | sudo tee /etc/nginx/sites-available/default
-service nginx start
+service nginx restart
