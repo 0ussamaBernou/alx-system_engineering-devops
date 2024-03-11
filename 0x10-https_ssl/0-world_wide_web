@@ -11,11 +11,16 @@ www () {
         if [ "$2" ]
         then
             domain=$(printf %s "$2.$1")
+
+            dig "$domain" | awk '/;; ANSWER SECTION:/{f=1; next} /^$/{f=0} f' | awk 'BEGIN { FS="[\t ]+" } {print "The subdomain" , substr($1, 1, index($1,".")-1), "is a", $4 , "record and points to", $5}'
         else
             domain=$1
+            subdomains=("www" "lb-01" "web-01" "web-02")
+            for sub in "${subdomains[@]}"
+            do
+                dig "$sub.$domain" | awk '/;; ANSWER SECTION:/{f=1; next} /^$/{f=0} f' | awk 'BEGIN { FS="[\t ]+" } {print "The subdomain" , substr($1, 1, index($1,".")-1), "is a", $4 , "record and points to", $5}'
+            done
         fi
-
-        dig "$domain" | awk '/;; ANSWER SECTION:/{f=1; next} /^$/{f=0} f' | awk 'BEGIN { FS="[\t]+" } {print "The subdomain" , substr($1, 1, index($1,".")-1), "is a", $4 , "record and points to", $5}'
     fi
 }
 
