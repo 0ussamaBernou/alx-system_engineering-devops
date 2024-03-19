@@ -1,1 +1,22 @@
 #!/usr/bin/env bash
+# A script that blocks all incoming traffic but allows except SSH, HTTPS and HTTP
+
+# Install ufw if not installed
+sudo apt-get update && sudo apt-get install ufw -y
+
+# Enable ufw
+sudo ufw enable
+
+# Deny all incoming traffic
+sudo ufw default deny incoming
+
+# Allow SSH, HTTPS and HTTP
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+# restart ufw
+sudo ufw reload
+
+# Show the status of ufw
+sudo ufw status
