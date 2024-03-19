@@ -4,16 +4,13 @@
 # Install ufw if not installed
 sudo apt-get update && sudo apt-get install ufw -y
 
-# Enable ufw
-sudo ufw enable
-
 # Deny all incoming traffic
 sudo ufw default deny incoming
 
 # Allow SSH, HTTPS and HTTP
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 
-# restart ufw
-sudo ufw reload
+# Enable ufw
+sudo ufw enable
