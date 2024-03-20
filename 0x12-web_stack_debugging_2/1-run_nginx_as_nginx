@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+# This script is used to switch to another user and run a command as that user.
+sudo service nginx stop
+su -c "service nginx start" -s /bin/bash "nginx"
