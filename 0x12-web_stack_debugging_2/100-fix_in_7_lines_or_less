@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # This script is used to switch to another user and run a command as that user.
-sudo service nginx stop
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 chmod 644 /etc/nginx/nginx.conf
-su -c "service nginx start" -s /bin/bash "nginx"
+su -c "service nginx restart" -s /bin/bash "nginx"
