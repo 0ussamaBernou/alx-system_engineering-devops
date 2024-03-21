@@ -23,4 +23,4 @@ mysqldump --user=root --password="$MYSQL_ROOT_PASSWORD" --all-databases > backup
 tar -czvf "$BACKUP_ARCHIVE" backup.sql
 
 # Remove the uncompressed backup file
-rm backup.sql
+# rm backup.sql
