@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# MySQL backup script
 # Check if the password argument is provided
 if [ -z "$1" ]; then
     echo "Error: MySQL root password is required."
