@@ -1,1 +1,26 @@
 #!/usr/bin/env bash
+
+# Check if the password argument is provided
+if [ -z "$1" ]; then
+    echo "Error: MySQL root password is required."
+    echo "Usage: $0 <mysql_root_password>"
+    exit 1
+fi
+
+# Set the MySQL root password
+MYSQL_ROOT_PASSWORD="$1"
+
+# Get the current date in the desired format
+BACKUP_DATE=$(date +%d-%m-%Y)
+
+# Construct the backup archive filename
+BACKUP_ARCHIVE="$BACKUP_DATE.tar.gz"
+
+# Dump all MySQL databases
+mysqldump --user=holberton_user --password="$MYSQL_ROOT_PASSWORD" --all-databases > backup.sql
+
+# Create the compressed archive
+tar czf "$BACKUP_ARCHIVE" backup.sql
+
+# Remove the uncompressed backup file
+rm backup.sql
