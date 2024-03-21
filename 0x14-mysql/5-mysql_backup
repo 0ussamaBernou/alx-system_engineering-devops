@@ -20,7 +20,7 @@ BACKUP_ARCHIVE="$BACKUP_DATE.tar.gz"
 mysqldump --user=root --password="$MYSQL_ROOT_PASSWORD" --all-databases > backup.sql
 
 # Create the compressed archive
-tar czf "$BACKUP_ARCHIVE" backup.sql
+tar -czvf "$BACKUP_ARCHIVE" backup.sql
 
 # Remove the uncompressed backup file
 rm backup.sql
