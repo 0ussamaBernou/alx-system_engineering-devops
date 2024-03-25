@@ -17,7 +17,7 @@ if __name__ == "__main__":
     with open(f"{id}.csv", "w") as f:
         for task in todos:
             f.write(
-                f'"{user.get("id")}", "{user.get("username")}", '
-                f'"{True if task.get("title") in completed else False}", '
+                f'"{user.get("id")}","{user.get("username")}",'
+                f'"{True if task.get("title") in completed else False}",'
                 f'"{task.get("title")}"\n'
             )
