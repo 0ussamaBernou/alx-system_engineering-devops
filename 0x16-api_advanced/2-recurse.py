@@ -4,7 +4,6 @@ module to query the Reddit API and returns all  hot posts recursively
 """
 
 import requests
-import rich
 
 
 def recurse(subreddit, hot_list=[], count=0, after=None):
