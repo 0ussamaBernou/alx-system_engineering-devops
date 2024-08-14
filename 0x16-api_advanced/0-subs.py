@@ -11,7 +11,8 @@ import requests
 def number_of_subscribers(subreddit: str):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     # add chrome on windows user agent
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
+    (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
     headers = {
         "User-Agent": user_agent,
     }
