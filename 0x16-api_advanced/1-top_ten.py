@@ -4,7 +4,6 @@ Top 10 posts of a subreddit
 """
 
 import requests
-import rich
 
 
 def top_ten(subreddit):
@@ -17,5 +16,8 @@ def top_ten(subreddit):
     response = requests.get(url, headers=headers)
     data = response.json()
     posts = data["data"]["children"]
-    [rich.print(post["data"]["title"]) for post in posts]
-    return posts
+    if not posts:
+        print("None")
+        return
+    [print(post["data"]["title"]) for post in posts]
+    return
