@@ -16,11 +16,10 @@ def top_ten(subreddit):
     headers = {"User-Agent": user_agent}
     response = requests.get(url, headers=headers)
     data = response.json()
-    if not data:
+    if "data" in data:
+        posts = data["data"]["children"]
+        [print(post["data"]["title"]) for post in posts]
+        return
+    elif data["message"] != "Not Found":
         print("None")
         return
-    if data["data"]:
-        if data["data"]["children"]:
-            posts = data["data"]["children"]
-    [print(post["data"]["title"]) for post in posts]
-    return

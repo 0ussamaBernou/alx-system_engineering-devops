@@ -16,12 +16,12 @@ def number_of_subscribers(subreddit: str):
     headers = {
         "User-Agent": user_agent,
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, allow_redirects=True)
     data = response.json()
-    if not data:
+    subscribers = 0
+    if "data" in data:
+        if "subscribers" in data["data"]:
+            subscribers = data["data"]["subscribers"]
+            return subscribers
+    else:
         return 0
-    try:
-        subscribers = data["data"]["subscribers"]
-    except Exception:
-        return 0
-    return subscribers
