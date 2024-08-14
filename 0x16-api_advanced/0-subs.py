@@ -8,7 +8,7 @@ If an invalid subreddit is given, the function should return 0.
 import requests
 
 
-def number_of_subscribers(subreddit: str):
+def number_of_subscribers(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     # add chrome on windows user agent
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\

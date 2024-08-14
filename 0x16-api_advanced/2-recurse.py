@@ -6,9 +6,7 @@ Recursively query reddit for a given subreddit hot posts
 import requests
 
 
-def recurse(
-    subreddit: str, hot_list: list[str] = []
-) -> list[str] | None:
+def recurse(subreddit, hot_list=[]):
     """
     Query reddit for hot posts
     """
