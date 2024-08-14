@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 Recursively query reddit for a given subreddit hot posts
-
 """
 
 import requests

@@ -19,6 +19,8 @@ def top_ten(subreddit):
     if not data:
         print("None")
         return
-    posts = data["data"]["children"]
+    if data["data"]:
+        if data["data"]["children"]:
+            posts = data["data"]["children"]
     [print(post["data"]["title"]) for post in posts]
     return
