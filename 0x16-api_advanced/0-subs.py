@@ -9,6 +9,7 @@ import requests
 
 
 def number_of_subscribers(subreddit):
+    """Returns the number of subscribers for a given subreddit"""
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     # add chrome on windows user agent
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
