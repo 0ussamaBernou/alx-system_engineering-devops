@@ -1,0 +1,11 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "python@3.5.9": {
+      "last_modified": "2020-08-14T16:23:34Z",
+      "resolved": "github:NixOS/nixpkgs/96745f0228359a71051a1d0bda4080e7ec134ade#python35",
+      "source": "devbox-search",
+      "version": "3.5.9"
+    }
+  }
+}
