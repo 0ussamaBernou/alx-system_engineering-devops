@@ -1,3 +1,4 @@
+# increase file descriptor limit
 file { '/etc/security/limits.d/nofile.conf':
   ensure  => present,
   content => "* soft nofile 65536\n* hard nofile 65536\n",
